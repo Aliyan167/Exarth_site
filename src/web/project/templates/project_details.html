@@ -1,0 +1,133 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+
+
+        <div class="stricky-header stricked-menu main-menu">
+            <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+        </div><!-- /.stricky-header -->
+        <section class="page-header">
+            <div class="page-header__bg"></div><!-- /.page-header__bg -->
+            <div class="page-header__shape1"></div><!-- /.page-header__shape1 -->
+            <div class="page-header__shape2"></div><!-- /.page-header__shape1 -->
+            <div class="page-header__shape3 wow slideInRight" data-wow-delay="300ms"></div><!-- /.page-header__shape3 -->
+            <div class="container">
+                <ul class="page-header__breadcrumb list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><span> Project Details</span></li>
+                </ul><!-- /.page-breadcrumb list-unstyled -->
+                <h2 class="page-header__title" style="color:white"  >project Details</h2><!-- /.page-title -->
+            </div><!-- /.container -->
+        </section><!-- /.page-header -->
+        <!-- Portfolio Details Start -->
+        <section class="portfolio-details" style="background-color: black;">
+            <div class="container">
+                <div class="portfolio-details__image wow fadeInUp" data-wow-delay="200ms">
+                    <img src="{{ project.image.url }}" alt="nisoz">
+                </div><!-- /.portfolio-image -->
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7 wow fadeInLeft" data-wow-delay="300ms">
+                        <div class="portfolio-details__content">
+                            <h3 class="portfolio-details__content__title">{{ project.title }}</h3>
+                            <p class="portfolio-details__content__text">
+                               {{ project.description }}
+                            </p>
+                            <p class="portfolio-details__content__text2">
+                                 {{ project.content|safe }}
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 wow fadeInRight" data-wow-delay="400ms">
+                        <div class="portfolio-details__right">
+                            <ul class="portfolio-details__info-list list-unstyled">
+                                <li><span>Date:</span>{{ project.start_date }}</li>
+                                <li><span>Services:</span>{{ project.title }}</li>
+                                <li><span>Client:</span>{{ project.client }}</li>
+                                <li><span>Location:</span>{{ project.location }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- /.portfolio-details-content -->
+                <div class="portfolio-details__pagination wow fadeInUp" data-wow-delay="400ms">
+                    <a class="portfolio-details__pagination__previous" href="portfolio-details.html" aria-label="Previous">
+                        <i class="icon-left-arrow"></i>
+                        <span>Previous project</span>Filmor Experience
+                    </a>
+                    <a class="portfolio-details__pagination__next" href="portfolio-details.html" aria-label="Next">
+                        <span>Next project</span>Filmor Experience
+                        <i class="icon-right-arrow"></i>
+                    </a>
+                </div><!-- /.pagination -->
+            </div>
+        </section>
+        <!-- Portfolio Details End -->
+        <!-- Portfolio Start -->
+    <section class="portfolio-one">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="section-title__triangle">
+                        <span class="section-title__triangle-left"></span>
+                        <span class="section-title__triangle-right"></span>
+                    </div>
+                    <h5 class="section-title__tagline">our completed works</h5>
+                    <h2 class="section-title__title">Recent clients projects</h2>
+                </div><!-- section-title -->
+            </div>
+        </div>
+        <div class="portfolio-one__slider nisoz-owl__carousel owl-carousel" data-owl-options='{
+            "loop": true,
+            "items": 3,
+            "smartSpeed": 1000,
+            "autoplay": true,
+            "autoplayTimeout": 6000,
+            "center": true,
+            "nav": false,
+            "dots": false,
+            "margin": 30,
+            "responsive":{
+                "0":{
+                    "items": 1,
+                    "margin": 0
+                },
+                "768":{
+                    "items": 1.5
+                },
+                "992":{
+                    "items": 2
+                },
+                "1300":{
+                    "items": 3
+                }
+            }
+            }'>
+            {% for object in projects %}
+            <div class="item"><!-- slider-item-start -->
+                <div class="portfolio-one__item">
+                    <div class="portfolio-one__thumb">
+                        <img src="{{  object.image.url }}" alt="nisoz"/>
+                    </div>
+                    <div class="portfolio-one__hover">
+                        <a class="portfolio-one__read-more" href="portfolio-details.html"><span
+                                class="icon-right-arrow"></span></a>
+                        <div class="portfolio-one__hover-bottom">
+                            <div class="portfolio-one__cats"><a href="portfolio.html">{{ object.ProjectCategory.name }}</a></div>
+                            <h3 class="portfolio-one__title"><a href="portfolio-details.html">{{ object.title }}</a>
+                            </h3>
+                        </div>
+                    </div>
+                </div><!-- folio-item -->
+            </div><!-- slider-item-end -->
+            {% endfor %}
+        </div><!-- slider-end -->
+    </div>
+</section>
+        <!-- Portfolio End -->
+
+
+
+
+
+{% endblock %}

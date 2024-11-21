@@ -1,0 +1,170 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div><!-- /.stricky-header -->
+<section class="page-header" style="background-color: black; color: white;"> >
+    <div class="page-header__bg"></div><!-- /.page-header__bg -->
+    <div class="page-header__shape1"></div><!-- /.page-header__shape1 -->
+    <div class="page-header__shape2"></div><!-- /.page-header__shape1 -->
+    <div class="page-header__shape3 wow slideInRight" data-wow-delay="300ms"></div><!-- /.page-header__shape3 -->
+    <div class="container">
+        <ul class="page-header__breadcrumb list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><span>Services</span></li>
+            <li><span>Service Details</span></li>
+        </ul><!-- /.page-breadcrumb list-unstyled -->
+        <h2 class="page-header__title" style="color:white">{{ service.title }} </h2><!-- /.page-title -->
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
+<!-- Services Details Start -->
+<section class="services-details" style="background-color: black; color: white;">>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 wow fadeInUp animated" data-wow-delay="300ms">
+                <div class="services-details__sidebar">
+                    <div class="services-details__services-list">
+                        <h3 class="services-details__services-title">All Services</h3>
+                        <ul class="services-details__services list-unstyled">
+                            {% for object in services %}
+                            <li><a href="#">{{ object.title }}</a></li>
+                            {% endfor%}
+                        </ul>
+                    </div><!-- /.service-widget -->
+                    <div class="services-details__banner">
+                        <div class="services-details__banner__image"
+                             style="background-image: url(assets/images/resources/banner-author.png)"></div>
+                        <h3 class="services-details__banner__title">Get a Free<br> Creative Web <br>Solutions</h3>
+                        <a href="{% url 'website:contact' %}" class="nisoz-btn">
+                            <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
+                                class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
+                            <span class="nisoz-btn__text">Contact</span>
+                        </a><!-- /.btn -->
+                    </div><!-- /.service-widget -->
+                </div><!-- /.service-sidebar -->
+            </div><!-- /.column -->
+            <div class="col-xl-8 col-lg-7 wow fadeInUp animated" data-wow-delay="400ms">
+                <div class="services-details__content">
+                    <div class="services-details__thumb">
+                        {% if service.background_image %}
+                        <img src="{{ service.background_image.url }}" alt="nisoz">
+                        {% else %}
+                        <p>No image available</p>
+                        {% endif %}
+                    </div>
+                    <h3 class="services-details__content__title">{{ service.title }}</h3>
+                    <p class="services-details__content__text">
+                        {{ service.description }}
+                    </p>
+                    <h4 class="services-details__content__title-two">Helping clients to solve appilcation development
+                        problems</h4>
+                    <p class="services-details__content__text">{{ service.content|safe }} </p>
+                    <h3 class="services-details__content__title-three">Why choose?</h3>
+                    <div class="row cus-row">
+                        <div class="col-xl-3 col-lg-6 col-md-3">
+                            <div class="services-details__box text-center">
+                                <div class="services-details__box__icon"><span class="icon-individual"></span></div>
+                                <h3 class="services-details__box__title">Professional people</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-3">
+                            <div class="services-details__box text-center">
+                                <div class="services-details__box__icon"><span class="icon-report-card"></span></div>
+                                <h3 class="services-details__box__title">High quality projects</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-3">
+                            <div class="services-details__box text-center">
+                                <div class="services-details__box__icon"><span class="icon-time-check"></span></div>
+                                <h3 class="services-details__box__title">Deliver<br> work on time</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-3">
+                            <div class="services-details__box text-center">
+                                <div class="services-details__box__icon"><span class="icon-trophy"></span></div>
+                                <h3 class="services-details__box__title">Award winning agency</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="services-details__benefit">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                <div class="services-details__benefit__img">
+                                    <img src="{% static 'assets/images/service/services-details-benefit-img.jpg' %}"
+                                         alt="nisoz">
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-12 col-md-6">
+                                <div class="services-details__benefit__content">
+                                    <h3 class="services-details__benefit__title">Our benefits</h3>
+                                    <p class="services-details__benefit__text">Get the Best Service with Exellence</p>
+                                    <ul class="services-details__benefit__lists list-unstyled">
+                                        <li><span class="fa fa-check-circle"></span>Cost Effective</li>
+                                        <li><span class="fa fa-check-circle"></span>Equal Opportunities</li>
+                                        <li><span class="fa fa-check-circle"></span>Creates High Brand Awareness</li>
+                                        <li><span class="fa fa-check-circle"></span>Higher ROI</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accrodion-one__wrapper nisoz-accrodion" data-grp-name="nisoz-accrodion">
+                        <div class="accrodion">
+                            <div class="accrodion-title">
+                                <h4>What happens to my data if I cancel?</h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accrodion-content">
+                                <div class="inner">
+                                    <p>There are many variations of passages of available but the have suffered
+                                        alteration in that some form by injected randomised words which don’t
+                                        look even as slightly believable now.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accrodion active">
+                            <div class="accrodion-title">
+                                <h4>What are the different types of marketing solutions?</h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accrodion-content">
+                                <div class="inner">
+                                    <p>There are many variations of passages of available but the have suffered
+                                        alteration in that some form by injected randomised words which don’t
+                                        look even as slightly believable now.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accrodion">
+                            <div class="accrodion-title">
+                                <h4>How often should i work on the digital marketing?</h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accrodion-content">
+                                <div class="inner">
+                                    <p>There are many variations of passages of available but the have suffered
+                                        alteration in that some form by injected randomised words which don’t
+                                        look even as slightly believable now.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                        <div class="accrodion">
+                            <div class="accrodion-title">
+                                <h4>Are social media good for the business growth?</h4>
+                            </div><!-- /.accordian-title -->
+                            <div class="accrodion-content">
+                                <div class="inner">
+                                    <p>There are many variations of passages of available but the have suffered
+                                        alteration in that some form by injected randomised words which don’t
+                                        look even as slightly believable now.</p>
+                                </div><!-- /.accordian-content -->
+                            </div>
+                        </div><!-- /.accordian-item -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services Details End -->
+
+{% endblock %}

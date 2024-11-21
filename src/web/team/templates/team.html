@@ -1,0 +1,56 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div><!-- /.stricky-header -->
+<section class="page-header" style="background-color: black;">
+    <div class="page-header__bg"></div><!-- /.page-header__bg -->
+    <div class="page-header__shape1"></div><!-- /.page-header__shape1 -->
+    <div class="page-header__shape2"></div><!-- /.page-header__shape1 -->
+    <div class="page-header__shape3 wow slideInRight" data-wow-delay="300ms"></div><!-- /.page-header__shape3 -->
+    <div class="container">
+        <ul class="page-header__breadcrumb list-unstyled">
+            <li style="color: white"><a href="{% url 'website:index' %}">Home</a></li>
+            <li style="color: white"><span>Our Team</span></li>
+        </ul><!-- /.page-breadcrumb list-unstyled -->
+        <h2 class="page-header__title" style="color: white">Our Team</h2><!-- /.page-title -->
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
+<!-- Team Start -->
+<section class="team-one team-one-about"  style="background-color: black;">
+    <div class="container">
+        <div class="row">
+            {% for member in team_members %}
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+                <div class="team-one__item">
+                    <div class="team-one__item__image">
+                        <img src="{{ member.image.url }}" alt="{{ member.name }}">
+                    </div><!-- /.team-image -->
+                    <div class="team-one__item__content">
+                        <h3 class="team-one__item__title">
+                            <a href="team-details.html">{{ member.name }}</a>
+                        </h3><!-- /.team-name -->
+                        <span class="team-one__item__designation">{{ member.role }}</span><!-- /.team-designation -->
+                        <div class="team-one__item__social-wrapper">
+                            <a class="team-one__item__links" href="#"><span class="fas fa-share-alt"></span></a>
+                            <!-- /.social-more -->
+                            <div class="team-one__item__social">
+                                <a href="{{ member.twitter_url }}"><i class="fab fa-twitter"></i></a>
+                                <a href="{{ member.facebook_url }}"><i class="fab fa-facebook"></i></a>
+                                <a href="{{ member.instagram_url }}"><i class="fab fa-instagram"></i></a>
+                            </div><!-- /.team-social -->
+                        </div>
+                    </div><!-- /.team-content -->
+                </div><!-- /.team-one -->
+            </div>
+              {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Team Start -->
+
+
+{% endblock %}

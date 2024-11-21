@@ -1,0 +1,120 @@
+{% extends 'website/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="stricky-header stricked-menu main-menu">
+    <div class="sticky-header__content"></div><!-- /.sticky-header__content -->
+</div><!-- /.stricky-header -->
+<section class="page-header">
+    <div class="page-header__bg"></div><!-- /.page-header__bg -->
+    <div class="page-header__shape1"></div><!-- /.page-header__shape1 -->
+    <div class="page-header__shape2"></div><!-- /.page-header__shape1 -->
+    <div class="page-header__shape3 wow slideInRight" data-wow-delay="300ms"></div><!-- /.page-header__shape3 -->
+    <div class="container">
+        <ul class="page-header__breadcrumb list-unstyled">
+            <li><a href="{% url 'website:index' %}">Home</a></li>
+            <li><span>Services</span></li>
+        </ul><!-- /.page-breadcrumb list-unstyled -->
+        <h2 class="page-header__title" style="color: white">Services</h2><!-- /.page-title -->
+    </div><!-- /.container -->
+</section><!-- /.page-header -->
+<!-- Service Start -->
+
+<!-- Service Start -->
+<div class="client-carousel @@extraClassName">
+
+</div><!-- /.client-carousel -->
+<!-- Service Start -->
+<section class="service-one" style="background-image: url(assets/images/shapes/service-bg-1-rtl.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="section-title__triangle">
+                        <span class="section-title__triangle-left"></span>
+                        <span class="section-title__triangle-right"></span>
+                    </div>
+                    <h5 class="section-title__tagline">our services</h5>
+                    <h2 class="section-title__title">what we offer</h2>
+                </div><!-- section-title -->
+            </div>
+        </div>
+        <div class="row">
+            {% for service in services %}
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                <div class="service-one__item">
+                    <div class="service-one__item__wrapper">
+                        <div class="service-one__item__hover"
+                             style="background-image: url(/static/assets/images/shapes/service-1-hover-shape.png);"></div>
+                        <div class="service-one__item__number"></div>
+                        <!-- /.service-number -->
+                        <div class="clearfix"></div>
+                        <div class="service-one__item__icon">
+                            {% if service.icon %}
+                            <img src="{{ service.icon.url }}" alt="{{ service.title }}"/>
+                            {% else %}
+                            <span class="icon-website-design"></span>  <!-- Default icon if no icon is set -->
+                            {% endif %}
+                        </div><!-- /.service-icon -->
+                        <h3 class="service-one__item__title">
+                            <a href="{% url 'service:service-details' service.pk %}">{{ service.title }}</a>
+                        </h3><!-- /.service-title -->
+                        <p class="service-one__item__text">{{ service.description }}</p><!-- /.service-content -->
+                    </div>
+                </div><!-- /.service-card-one -->
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center wow fadeInUp" data-wow-delay="500ms">
+            <h5 class="service-one__text">
+                Digital Agency services built specifically for your business.
+                <a href="services.html" class="nisoz-btn">
+                    <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
+                        class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
+                    <span class="nisoz-btn__text">Find Your Solution</span>
+                </a><!-- /.btn -->
+            </h5>
+        </div>
+    </div>
+</section>
+<!-- Service Start -->
+<!-- Call To Action Start -->
+<section class="cta-one jarallax" data-jarallax data-speed="0.3" data-imgPosition="50% -100%">
+    <div class="cta-one__bg"
+         style="background-image: url({% static 'assets/images/backgrounds/cta-bg-1.jpg' %});"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-xl-8 wow fadeInLeft" data-wow-delay="200ms">
+                <div class="section-title">
+                    <h2 class="section-title__title">Grow With Community & Experience Endless Possibilities</h2>
+                </div><!-- section-title -->
+            </div>
+            <div class="col-md-4 col-xl-4 text-end wow fadeInRight" data-wow-delay="300ms">
+                <a href="contact.html" class="nisoz-btn">
+                    <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
+                        class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
+                    <span class="nisoz-btn__text">Discover More</span>
+                </a><!-- /.btn -->
+            </div>
+        </div>
+        <div class="cta-one__text wow fadeInUp" data-wow-delay="400ms">
+            <div class="section-title__triangle">
+                <span class="section-title__triangle-left"></span>
+                <span class="section-title__triangle-right"></span>
+            </div>
+            <p>Creative agency services built specifically for your business.</p>
+        </div>
+    </div>
+</section>
+<!-- Call To Action End -->
+<!-- Feature Start -->
+
+<!-- Feature End -->
+<!-- Service Start -->
+
+<!-- Service Start -->
+
+
+{% endblock %}
