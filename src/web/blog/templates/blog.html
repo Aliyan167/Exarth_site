@@ -21,61 +21,37 @@
 </section><!-- /.page-header -->
 <div class="blog-page" style="background-color: black;">
     <div class="container">
-        <div class="nisoz-owl__dots nisoz-owl__carousel owl-theme owl-carousel" data-owl-options='{
-            "items": 1,
-            "margin": 30,
-            "smartSpeed": 700,
-            "loop":true,
-            "autoplay": true,
-            "nav":false,
-            "dots":true,
-            "navText": ["<span class=\"icon-left-arrow\"></span>","<span class=\"icon-right-arrow\"></span>"],
-            "responsive":{
-                "0":{
-                    "items":1,
-                    "margin": 0
-                },
-                "600":{
-                    "items": 2
-                },
-                "992":{
-                    "items": 3
-                }
-            }
-            }'>
-            <div class="item">
+
+<div class="row">
+    {% for post in posts %}
+    <div class="col-md-4 ">   
+        <div class="item">
                 <div class="blog-one__item">
                     <div class="blog-one__image">
-                        <img src="{% static 'assets/images/blog/blog-1-6.jpg' %}"
-                             alt="It has survived not only five centuries, but also">
-                        <a href="blog-details-right.html"></a>
+                        <img  src="{{ post.image.url }}" alt="{{ post.title }}">
+                        <a href="{% url 'blog:blog-details' post.id %}"></a>
                         <div class="blog-one__date">
-                            <span>30</span>
-                            June, 2023
+                            <span>{{ post.date_posted|date:"d" }}</span>
+                            {{ post.date_posted|date:"F" }}
                         </div><!-- /.blog-date -->
                     </div><!-- /.blog-image -->
                     <div class="blog-one__content">
-                        <div class="blog-one__meta">
-                            <div class="blog-one__meta__author">
-                                <div class="blog-one__meta__thumb"><img
-                                        src="{% static 'assets/images/blog/author-1.png' %}" alt="nisoz"/></div>
-                                by<br><a href="blog-list-right.html">Layerdrops</a>
-                            </div>
-                            <span class="fas fa-comments"></span>2 Comments
-                        </div><!-- /.blog-meta -->
                         <h3 class="blog-one__title">
-                            <a href="{% url 'blog:blog-details' %}">It has survived not only five centuries, but also</a>
+                            <a href="{% url 'blog:blog-details' post.id %}">{{ post.title|slice:":20" }}</a>
                         </h3><!-- /.blog-title -->
-                        <a href="{% url 'blog:blog-details' %}" class="nisoz-btn">
+                        <a href="{% url 'blog:blog-details' post.id %}" class="nisoz-btn">
                             <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
                                 class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
                             <span class="nisoz-btn__text">Read More<span class="icon-right-arrow"></span></span>
                         </a><!-- /.blog-read-more -->
                     </div><!-- /.blog-content -->
                 </div><!-- /.blog-card-one -->
-            </div>
         </div>
     </div>
+        {% empty %}
+            <p>No posts available.</p>
+        {% endfor %}
+        </div>
 </div>
 
 
