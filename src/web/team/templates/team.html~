@@ -27,7 +27,7 @@
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
                 <div class="team-one__item">
                     <div class="team-one__item__image">
-                        <img src="{{ member.image.url }}" alt="{{ member.name }}" width="200" height="200"   >
+                        <img src="{{ member.image.url }}" alt="{{ member.name }} width="200" height="200"   ">
                     </div><!-- /.team-image -->
                     <div class="team-one__item__content">
                         <h3 class="team-one__item__title">

@@ -63,88 +63,67 @@
         </section>
         <!-- Portfolio Details End -->
         <!-- Portfolio Start -->
-        <section class="portfolio-one portfolio-one-details">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="section-title text-center">
-                            <div class="section-title__triangle">
-                                <span class="section-title__triangle-left"></span>
-                                <span class="section-title__triangle-right"></span>
-                            </div>
-                            <h5 class="section-title__tagline">explore more work</h5>
-                            <h2 class="section-title__title">similar projects</h2>
-                        </div><!-- section-title -->
+    <section class="portfolio-one">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <div class="section-title__triangle">
+                        <span class="section-title__triangle-left"></span>
+                        <span class="section-title__triangle-right"></span>
                     </div>
-                </div>
-                <div class="nisoz-owl__dots nisoz-owl__carousel owl-theme owl-carousel" data-owl-options='{
+                    <h5 class="section-title__tagline">our completed works</h5>
+                    <h2 class="section-title__title">Recent clients projects</h2>
+                </div><!-- section-title -->
+            </div>
+        </div>
+        <div class="portfolio-one__slider nisoz-owl__carousel owl-carousel" data-owl-options='{
+            "loop": true,
             "items": 3,
-            "margin": 30,
-            "smartSpeed": 700,
-            "loop":true,
+            "smartSpeed": 1000,
             "autoplay": true,
+            "autoplayTimeout": 6000,
             "center": true,
-            "nav":false,
-            "dots":false,
-            "navText": ["<span class=\"icon-left-arrow\"></span>","<span class=\"icon-right-arrow\"></span>"],
+            "nav": false,
+            "dots": false,
+            "margin": 30,
             "responsive":{
                 "0":{
-                    "items":1,
+                    "items": 1,
                     "margin": 0
                 },
-                "600":{
-                    "items": 2
+                "768":{
+                    "items": 1.5
                 },
                 "992":{
+                    "items": 2
+                },
+                "1300":{
                     "items": 3
                 }
             }
             }'>
-                    <div class="item">
-                        <div class="portfolio-one__item">
-                            <div class="portfolio-one__thumb">
-                                <img src="{% static 'assets/images/portfolio/portfolio-3-1.jpg' %}" alt="nisoz" />
-                            </div>
-                            <div class="portfolio-one__hover">
-                                <a class="portfolio-one__read-more" href="portfolio-details.html"><span class="icon-right-arrow"></span></a>
-                                <div class="portfolio-one__hover-bottom">
-                                    <div class="portfolio-one__cats"><a href="portfolio.html">Creative</a></div>
-                                    <h3 class="portfolio-one__title"><a href="portfolio-details.html">Technology website development</a></h3>
-                                </div>
-                            </div>
-                        </div><!-- folio-item -->
+            {% for object in projects %}
+            <div class="item"><!-- slider-item-start -->
+                <div class="portfolio-one__item">
+                    <div class="portfolio-one__thumb">
+                        <img src="{{  object.image.url }}" alt="nisoz"/>
                     </div>
-                    <div class="item">
-                        <div class="portfolio-one__item">
-                            <div class="portfolio-one__thumb">
-                                <img src="{% static 'assets/images/portfolio/portfolio-3-3.jpg' %}" alt="nisoz" />
-                            </div>
-                            <div class="portfolio-one__hover">
-                                <a class="portfolio-one__read-more" href="portfolio-details.html"><span class="icon-right-arrow"></span></a>
-                                <div class="portfolio-one__hover-bottom">
-                                    <div class="portfolio-one__cats"><a href="portfolio.html">Creative</a></div>
-                                    <h3 class="portfolio-one__title"><a href="portfolio-details.html">Technology website development</a></h3>
-                                </div>
-                            </div>
-                        </div><!-- folio-item -->
+                    <div class="portfolio-one__hover">
+                        <a class="portfolio-one__read-more" href="portfolio-details.html"><span
+                                class="icon-right-arrow"></span></a>
+                        <div class="portfolio-one__hover-bottom">
+                            <div class="portfolio-one__cats"><a href="portfolio.html">{{ object.ProjectCategory.name }}</a></div>
+                            <h3 class="portfolio-one__title"><a href="portfolio-details.html">{{ object.title }}</a>
+                            </h3>
+                        </div>
                     </div>
-                    <div class="item">
-                        <div class="portfolio-one__item">
-                            <div class="portfolio-one__thumb">
-                                <img src="{% static 'assets/images/portfolio/portfolio-3-4.jpg' %}" alt="nisoz" />
-                            </div>
-                            <div class="portfolio-one__hover">
-                                <a class="portfolio-one__read-more" href="portfolio-details.html"><span class="icon-right-arrow"></span></a>
-                                <div class="portfolio-one__hover-bottom">
-                                    <div class="portfolio-one__cats"><a href="portfolio.html">Creative</a></div>
-                                    <h3 class="portfolio-one__title"><a href="portfolio-details.html">Technology website development</a></h3>
-                                </div>
-                            </div>
-                        </div><!-- folio-item -->
-                    </div>
-                </div><!-- slider-end -->
-            </div>
-        </section>
+                </div><!-- folio-item -->
+            </div><!-- slider-item-end -->
+            {% endfor %}
+        </div><!-- slider-end -->
+    </div>
+</section>
         <!-- Portfolio End -->
 
 

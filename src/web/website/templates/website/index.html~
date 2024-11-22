@@ -326,7 +326,7 @@
                             <span class="icon-website-design"></span>
                         </div><!-- /.service-icon -->
                         <h3 class="service-one__item__title">
-                            <a href="{% url 'service:service-details' object.id %}">{{ object.title }}</a>
+                            <a href="{% url 'service:service-details' %}">{{ object.title }}</a>
                         </h3><!-- /.service-title -->
                         <p class="service-one__item__text">{{ object.description }}</p><!-- /.service-content -->
                     </div>
