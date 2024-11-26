@@ -23,7 +23,7 @@ class ServiceDetailView(TemplateView):
         service = get_object_or_404(Service, id=self.kwargs['service_id'])
         context = super().get_context_data(**kwargs)
         context['services'] = Service.objects.all()[:6]
-        context['technology'] = Technology.objects.filter(parent__isnull=True).prefetch_related('technology_set')
+        context['tech'] = Technology.objects.all(parent=True)
 
         context['service'] = service
         return context

@@ -82,9 +82,18 @@ class Application(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self,  *args, **kwargs):
+    def save(self, *args, **kwargs):
         if Application.objects.exists() and not self.pk:
             raise ValidationError("Only one record allowed.")
         super(Application, self).save(*args, **kwargs)
 
 
+class Technology(models.Model):
+    name = models.CharField(max_length=100)
+    thumbnail_image = models.ImageField(upload_to='service_icons/', blank=True, null=True)
+    parent = models.ForeignKey("self", models.SET_NULL, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name

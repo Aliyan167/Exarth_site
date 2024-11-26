@@ -1,11 +1,7 @@
 from django.contrib import admin
-from .models import Technology, ProjectCategory, Project, ProjectTechnology
+from .models import  ProjectCategory, Project, ProjectTechnology
 
 
-@admin.register(Technology)
-class TechnologyAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    search_fields = ('name',)
 
 
 @admin.register(ProjectCategory)
@@ -19,7 +15,6 @@ class ProjectCategoryAdmin(admin.ModelAdmin):
 class ProjectTechnologyInline(admin.TabularInline):
     model = ProjectTechnology
     extra = 1
-    autocomplete_fields = ['technology']
 
 
 @admin.register(Project)

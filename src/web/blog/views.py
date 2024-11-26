@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, DetailView
 from .models import BlogPost
 
 
@@ -16,6 +16,9 @@ class BlogView(TemplateView):
         return context
 
 
-class blogDetailView(TemplateView):
+class BlogDetailView(DetailView):
     template_name = 'blog_details.html'
 
+    def get_queryset(self):
+        pk = self.kwargs.get('pk')
+        return BlogPost.objects.filter(pk=pk)

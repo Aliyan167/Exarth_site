@@ -1,21 +1,21 @@
 from django.contrib import admin
-from .models import ServiceCategory, Service
+from .models import Service, ServiceTechnology
 
 
-class ServiceCategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'parent', 'is_active', 'thumbnail_image')
-    list_filter = ('is_active', 'parent')
-    search_fields = ('name',)
-    prepopulated_fields = {"name": ("name",)}  # Auto-generate name from category
+# Define the inline class for ServiceTechnology
+class ServiceTechnologyInline(admin.TabularInline):  # You can also use StackedInline
+    model = ServiceTechnology
+    extra = 1  # Number of empty forms to display in the inline section
 
 
+# Customize the Service admin
+@admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'order', 'background_image')  # Removed 'is_active'
-    list_filter = ('order',)
-    search_fields = ('title', 'description')
-    ordering = ('order',)  # Sort services based on order field
-    prepopulated_fields = {"title": ("title",)}  # Auto-generate title from title
+    list_display = ('title', 'order')
+    inlines = [ServiceTechnologyInline]  # Attach the inline to Service
 
 
-admin.site.register(ServiceCategory, ServiceCategoryAdmin)
-admin.site.register(Service, ServiceAdmin)
+# Register ServiceTechnology separately (optional)
+@admin.register(ServiceTechnology)
+class ServiceTechnologyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'service', 'created_at', 'updated_at')

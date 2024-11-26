@@ -39,10 +39,13 @@
                     <div class="row">
                         <div class="col-xl-8">
                             <div class="main-slider__content">
-                                <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2>
+                                <h2 class="main-slider__title">Innovative <br> Reliable <br> Partner with Exarth for
+                                    Success</h2>
                                 <!-- slider-title -->
-                                <p class="main-slider__text">We are delivering the best services to our
-                                    customers.</p><!-- slider-text -->
+                                <p class="main-slider__text">From Concept to Launch – We Deliver Excellence in Every
+                                    Line of Code
+                                    Specialized in Cutting-Edge Mobile, Web, Cloud, and AI Solutions.
+                                    .</p><!-- slider-text -->
                                 <div class="main-slider__btn">
                                     <a href="{% url 'website:about' %}" class="nisoz-btn">
                                         <span class="nisoz-btn__shape"></span><span
@@ -75,7 +78,8 @@
                     <div class="row">
                         <div class="col-xl-8">
                             <div class="main-slider__content">
-                                <h2 class="main-slider__title">Creative <br>Services For <br>Your Business</h2>
+                                <h2 class="main-slider__title">From Concept to Launch <br> We Deliver Excellence <br>Your
+                                    Business</h2>
                                 <!-- slider-title -->
                                 <p class="main-slider__text">We are delivering the best services to our
                                     customers.</p><!-- slider-text -->
@@ -176,13 +180,15 @@
                             <span class="section-title__triangle-left"></span>
                             <span class="section-title__triangle-right"></span>
                         </div>
-                        <h5 class="section-title__tagline">about agency</h5>
+                        <h5 class="section-title__tagline">about Exarth </h5>
                         <h2 class="section-title__title">we’re solutions to your creative business</h2>
                     </div><!-- section-title -->
                     <p class="about-one__content__text">
-                        There are many variations of simply free text passages of available but the majority have
-                        suffered alteration in some form,
-                        by injected hum randomised words which don't slightly.
+                        we combine innovation and precision to create solutions that redefine your digital
+                        footprint. Our expertise in mobile app development, web technologies, AI, and cloud services
+                        ensures your business stays ahead in an ever-evolving tech landscape. Partner with us to bring
+                        your ideas to life.
+
                     </p>
                     <div class="row">
                         <div class="col-md-6">
@@ -265,31 +271,33 @@
             }
             }'>
             <div class="client-carousel__one__item">
-                <img src="#" alt="nisoz">
+                  <a href="#">
+                <img src="{% static 'assets/images/1.png' %}" alt="nisoz">
+                  </a>
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="#" alt="nisoz">
+                <img src="{% static 'assets/images/2.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/3.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/4.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/5.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/6.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/7.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/8.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
-                <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
+                <img src="{% static 'assets/images/fld.png' %}" alt="nisoz">
             </div><!-- /.owl-slide-item-->
             <div class="client-carousel__one__item">
                 <img src="{% static 'assets/images/brand/brand-1-2.png' %}" alt="nisoz">
@@ -314,7 +322,7 @@
             </div>
         </div>
         <div class="row">
-            {% for object in services %}
+            {% for service in services %}
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                 <div class="service-one__item">
                     <div class="service-one__item__wrapper">
@@ -326,19 +334,28 @@
                             <span class="icon-website-design"></span>
                         </div><!-- /.service-icon -->
                         <h3 class="service-one__item__title">
-                            <a href="{% url 'service:service-details' object.id %}">{{ object.title }}</a>
+                            <a href="{% url 'service:service-details' service.id %}">{{ service.title }}</a>
                         </h3><!-- /.service-title -->
-                        <p class="service-one__item__text">{{ object.description }}</p><!-- /.service-content -->
+                        <p class="service-one__item__text">{{ service.description|slice:'100' }}</p>
+                        <div class="row d-flex">
+                            {% for object in service.technologies.all %}
+                            <div class="col-md-4 mt-2 ">
+                                <img class="rounded-2" style="max-height:50px; max-width:50px;"
+                                     src="{{ object.image.url }}"
+                                     alt="{{ service.technology.name }}">
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div><!-- /.service-card-one -->
+                </div>
             </div>
             {% endfor %}
 
         </div>
         <div class="text-center wow fadeInUp" data-wow-delay="500ms">
             <h5 class="service-one__text">
-                Digital Agency services built specifically for your business.
-                <a href="services.html" class="nisoz-btn">
+                Digital Exarth services built specifically for your business.
+                <a href="#" class="nisoz-btn">
                     <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
                         class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span>
                     <span class="nisoz-btn__text">Find Your Solution</span>
@@ -372,7 +389,7 @@
                 <span class="section-title__triangle-left"></span>
                 <span class="section-title__triangle-right"></span>
             </div>
-            <p>Creative agency services built specifically for your business.</p>
+            <p>Creative Exarth services built specifically for your business.</p>
         </div>
     </div>
 </section>
@@ -463,7 +480,8 @@
                                 class="icon-right-arrow"></span></a>
                         <div class="portfolio-one__hover-bottom">
                             <div class="portfolio-one__cats"><a href="#">{{ object.ProjectCategory.name }}</a></div>
-                            <h3 class="portfolio-one__title"><a href="{% url 'project:project-details' object.id %}">{{ object.title }}</a>
+                            <h3 class="portfolio-one__title"><a href="{% url 'project:project-details' object.id %}">{{
+                                object.title }}</a>
                             </h3>
                         </div>
                     </div>
@@ -543,19 +561,21 @@
                             <span class="section-title__triangle-left"></span>
                             <span class="section-title__triangle-right"></span>
                         </div>
-                        <h5 class="section-title__tagline">agency benefits</h5>
-                        <h2 class="section-title__title">why choose agency?</h2>
+                        <h5 class="section-title__tagline">Exarth benefits</h5>
+                        <h2 class="section-title__title">why choose Exarth?</h2>
                     </div><!-- section-title -->
                     <p class="choose-one__content__text">
                         We can help with both your work and personal life tasks, what’s most important. simply are
                         many variations of passages.
                     </p>
                     <ul class="choose-one__content__list">
-                        <li><span class="icon-right-arrow-1"></span>Tincidunt elit magnis nulla facilisis sags
-                            sapien nunc amet ultrices.
+                        <li><span class="icon-right-arrow-1"></span> Collaborate with Exarth for technology that makes a
+                            difference.
+
                         </li>
-                        <li><span class="icon-right-arrow-1"></span>Tincidunt elit magnis nulla facilisis sags
-                            sapien nunc amet ultrices.
+                        <li><span class="icon-right-arrow-1"></span>We Deliver Excellence in Every Line of Code
+                            Specialized in Cutting-Edge Mobile, Web, Cloud, and AI Solutions.
+
                         </li>
                     </ul>
                 </div>
@@ -677,7 +697,7 @@
                             <span class="fas fa-comments"></span>2 Comments
                         </div><!-- /.blog-meta -->
                         <h3 class="blog-one__title">
-                            <a href="blog-details-right.html">{{  object.title }}</a>
+                            <a href="blog-details-right.html">{{ object.title }}</a>
                         </h3><!-- /.blog-title -->
                         <a href="blog-details-right.html" class="nisoz-btn">
                             <span class="nisoz-btn__shape"></span><span class="nisoz-btn__shape"></span><span
